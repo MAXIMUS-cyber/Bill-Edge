@@ -2,6 +2,7 @@ import React from 'react';
 import Calculator from '../../src/app/components/Calculator'
 import { render, screen, fireEvent} from '@testing-library/react';
 import {expect,it,describe} from 'vitest'
+import {userEvent} from '@testing-library/user-event';
 
 
 describe('Calculator', () => {
@@ -219,7 +220,27 @@ describe('Calculator', () => {
   });
   it('renders the toggler button for light/dark theme correctly',()=>{
     render(<Calculator />);
-    const togglerButton = screen.getByRole('button', { name: /☀️|🌙/ });
-    expect(togglerButton).toBeInTheDocument();
+    // Check initial icon
+  let toggleButton = screen.getByRole('button', { name: /🌙/ });
+  expect(toggleButton).toBeInTheDocument();
+
+  // Toggle to dark mode
+  fireEvent.click(toggleButton);
+  toggleButton = screen.getByRole('button', { name: /☀️/ });
+  expect(toggleButton).toBeInTheDocument();
+
+  // Toggle back to light mode
+  fireEvent.click(toggleButton);
+  toggleButton = screen.getByRole('button', { name: /🌙/ });
+  expect(toggleButton).toBeInTheDocument();
   })
-});
+  it('renders the toggler button for light/dark theme correctly',async()=>{
+    render(<Calculator />);
+    const toggleButton = screen.getByRole('button', { name: /🌙/ });
+    const user = userEvent.setup();
+    await user.click(toggleButton);
+    expect(screen.getByRole('button',{name: /☀️/})).toBeInTheDocument();
+    await user.click(toggleButton);
+    expect(screen.getByRole('button',{name: /🌙/})).toBeInTheDocument();
+  })
+})
