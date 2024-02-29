@@ -31,24 +31,12 @@ describe('Calculator', () => {
     expect(label1).toHaveClass('text-lg', 'font-semibold', 'text-gray-300');
     expect(label1).not.toHaveClass('text-gray-800');
   })
-  it('should render Number 1 (Label) correctly', () => {
+  it('should render Number 2 (Label) correctly', () => {
     // Check label
     const { getByText } = render(<Calculator/>);
 
     // Get the label element by its text content
-    const label1 = getByText('Number 1');
-    expect(label1).toBeInTheDocument();
-    //when dark mode is off (initially)
-    expect(label1).toHaveClass('text-lg', 'font-semibold', 'text-gray-800');
-    const darkModeButton = screen.getByRole('button', { name: /☀️|🌙/ });
-    fireEvent.click(darkModeButton);
-    expect(label1).toHaveClass('text-lg', 'font-semibold', 'text-gray-300');
-    expect(label1).not.toHaveClass('text-gray-800');
-  })
-  it('should render Number 2 (Labe2) correctly', () => {
-    // Check label
-    const { getByLabelText, getByTestId } = render(<Calculator/>);
-    const label2 = getByLabelText(/Number 2/i);
+    const label2 = getByText('Number 2');
     expect(label2).toBeInTheDocument();
     //when dark mode is off (initially)
     expect(label2).toHaveClass('text-lg', 'font-semibold', 'text-gray-800');
@@ -57,8 +45,6 @@ describe('Calculator', () => {
     expect(label2).toHaveClass('text-lg', 'font-semibold', 'text-gray-300');
     expect(label2).not.toHaveClass('text-gray-800');
   })
-
-
   it('should render Calculate Sum Button correctly', () => {
     
   })
