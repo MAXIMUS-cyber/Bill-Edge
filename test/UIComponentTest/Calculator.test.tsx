@@ -4,7 +4,6 @@ import { render, screen, fireEvent} from '@testing-library/react';
 import {expect,it,describe} from 'vitest'
 import {userEvent} from '@testing-library/user-event';
 
-
 describe('Calculator', () => {
   it('renders Calculator heading correctly', () => {
     render(<Calculator />);
