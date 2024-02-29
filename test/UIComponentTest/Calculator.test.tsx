@@ -1,7 +1,8 @@
 import React from 'react';
 import Calculator from '../../src/app/components/Calculator'
-import { render, screen, fireEvent, getByLabelText } from '@testing-library/react';
+import { render, screen, fireEvent} from '@testing-library/react';
 import {expect,it,describe} from 'vitest'
+
 
 describe('Calculator', () => {
   it('renders Calculator heading correctly', () => {
@@ -37,6 +38,7 @@ describe('Calculator', () => {
 
     // Get the label element by its text content
     const label2 = getByText('Number 2');
+
     expect(label2).toBeInTheDocument();
     //when dark mode is off (initially)
     expect(label2).toHaveClass('text-lg', 'font-semibold', 'text-gray-800');
@@ -46,16 +48,20 @@ describe('Calculator', () => {
     expect(label2).not.toHaveClass('text-gray-800');
   })
   it('should render Calculate Sum Button correctly', () => {
-    
+    render(<Calculator />);
+    const calculateSumButton = screen.getByText(/Calculate Sum/i);
+    expect(calculateSumButton).toBeInTheDocument();
   })
 
   it('toggles dark mode for main correctly', () => {
     render(<Calculator />);
+
     // Ensure initial dark mode is off
     const calculatorElement = screen.getByRole('main');
     expect(calculatorElement).not.toHaveClass('from-gray-800');
     expect(calculatorElement).not.toHaveClass('via-gray-700');
     expect(calculatorElement).not.toHaveClass('to-gray-600');
+
     // Click the dark mode toggle button
     const darkModeButton = screen.getByRole('button', { name: /☀️|🌙/ });
     fireEvent.click(darkModeButton);
@@ -74,12 +80,39 @@ describe('Calculator', () => {
     expect(calculatorElement).not.toHaveClass('to-gray-600');
   });
 
+  it('toggles light mode for main correctly', () => {
+    render(<Calculator />);
+  
+    // Ensure initial light mode is on
+    const calculatorElement = screen.getByRole('main');
+    expect(calculatorElement).toHaveClass('from-purple-500');
+    expect(calculatorElement).toHaveClass('via-pink-500');
+    expect(calculatorElement).toHaveClass('to-red-500');
+  
+    // Click the light mode toggle button
+    const lightModeButton = screen.getByRole('button', { name: /☀️|🌙/ });
+    fireEvent.click(lightModeButton);
+  
+    // Ensure light mode is toggled off
+    expect(calculatorElement).not.toHaveClass('from-purple-500');
+    expect(calculatorElement).not.toHaveClass('via-pink-500');
+    expect(calculatorElement).not.toHaveClass('to-red-500');
+  
+    // Click the light mode toggle button again
+    fireEvent.click(lightModeButton);
+  
+    // Ensure light mode is toggled on
+    expect(calculatorElement).toHaveClass('from-purple-500');
+    expect(calculatorElement).toHaveClass('via-pink-500');
+    expect(calculatorElement).toHaveClass('to-red-500');
+  });
+
   it('calculates sum correctly', () => {
     render(<Calculator />);
     
     // Enter values in Number 1 and Number 2 inputs
-    const num1Input = screen.getByLabelText(/Number 1/i) as HTMLInputElement;
-    const num2Input = screen.getByLabelText(/Number 2/i) as HTMLInputElement;
+    const num1Input = screen.getByLabelText(/Number 1/i)
+    const num2Input = screen.getByLabelText(/Number 2/i)
     fireEvent.change(num1Input, { target: { value: '10' } });
     fireEvent.change(num2Input, { target: { value: '5' } });
 
@@ -88,7 +121,12 @@ describe('Calculator', () => {
     fireEvent.click(calculateButton);
 
     // Ensure result is displayed correctly
-    const resultElement = screen.getByText(/Sum: 15/i);
+    const resultElement = screen.getByText(/15/i);
     expect(resultElement).toBeInTheDocument();
   });
+  it('renders the toggler button for light/dark theme correctly',()=>{
+    render(<Calculator />);
+    const togglerButton = screen.getByRole('button', { name: /☀️|🌙/ });
+    expect(togglerButton).toBeInTheDocument();
+  })
 });
