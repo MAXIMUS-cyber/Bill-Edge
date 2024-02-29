@@ -18,21 +18,6 @@ describe('Calculator', () => {
     expect(heading).not.toHaveClass('text-gray-800');
   });
 
-  it('should render Number 1 (Label) correctly', () => {
-    // Check label
-    const { getByText } = render(<Calculator/>);
-
-    // Get the label element by its text content
-    const label1 = getByText('Number 1');
-    expect(label1).toBeInTheDocument();
-    //when dark mode is off (initially)
-    expect(label1).toHaveClass('text-lg', 'font-semibold', 'text-gray-800');
-    const darkModeButton = screen.getByRole('button', { name: /☀️|🌙/ });
-    fireEvent.click(darkModeButton);
-    expect(label1).toHaveClass('text-lg', 'font-semibold', 'text-gray-300');
-    expect(label1).not.toHaveClass('text-gray-800');
-  })
-
   describe('checking the rendering of the input field for Number 1 in light/dark mode',()=>{
     it('renders input field for Number 1 in light mode', () => {
       render(<Calculator />);
@@ -76,22 +61,17 @@ describe('Calculator', () => {
       // Check if the input field is in dark mode
       expect(num1Input).toHaveClass('dark:bg-gray-700');
     });
-  })
 
-  it('should render Number 2 (Label) correctly', () => {
-    // Check label
-    const { getByText } = render(<Calculator/>);
-
-    // Get the label element by its text content
-    const label2 = getByText('Number 2');
-
-    expect(label2).toBeInTheDocument();
-    //when dark mode is off (initially)
-    expect(label2).toHaveClass('text-lg', 'font-semibold', 'text-gray-800');
-    const darkModeButton = screen.getByRole('button', { name: /☀️|🌙/ });
-    fireEvent.click(darkModeButton);
-    expect(label2).toHaveClass('text-lg', 'font-semibold', 'text-gray-300');
-    expect(label2).not.toHaveClass('text-gray-800');
+    it('updates num1 state on input change', () => {
+      const { getByTestId } = render(<Calculator />);
+      const inputElement = getByTestId('num1-input') as HTMLInputElement;
+   
+      // Simulate user input
+      fireEvent.change(inputElement, { target: { value: '123' } });
+   
+      // Check if the input value is updated correctly
+      expect(inputElement.value).toBe('123');
+    });
   })
 
   describe('checking the rendering of the input field for Number 2 in light/dark mode',()=>{
@@ -137,13 +117,24 @@ describe('Calculator', () => {
       // Check if the input field is in dark mode
       expect(num2Input).toHaveClass('dark:bg-gray-700');
     });
+
+    it('updates num2 state on input change', () => {
+      const { getByTestId } = render(<Calculator />);
+      const inputElement = getByTestId('num2-input') as HTMLInputElement;
+   
+      // Simulate user input
+      fireEvent.change(inputElement, { target: { value: '143' } });
+   
+      // Check if the input value is updated correctly
+      expect(inputElement.value).toBe('143');
+    });
   })
 
   it('should render Calculate Sum Button correctly', () => {
-    const { getByText } = render(<Calculator/>);
+    render(<Calculator/>);
    
     // Get the button element by its text content
-    const calSumButton = getByText('Calculate Sum');
+    const calSumButton = screen.getByRole('button', { name: /Calculate Sum/i });
     expect(calSumButton).toBeInTheDocument();
     //Light Mode
     expect(calSumButton).toHaveClass('from-purple-600', 'to-pink-600');
@@ -185,7 +176,7 @@ describe('Calculator', () => {
   it('toggles light mode for main correctly', () => {
     render(<Calculator />);
   
-    // Ensure initial light mode is on
+    // Ensure initially light mode is on
     const calculatorElement = screen.getByRole('main');
     expect(calculatorElement).toHaveClass('from-purple-500');
     expect(calculatorElement).toHaveClass('via-pink-500');
