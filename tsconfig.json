@@ -3,7 +3,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "types": ["vitest/globals"],
+    "types": ["vitest"],
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,

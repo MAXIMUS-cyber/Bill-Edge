@@ -1,6 +1,7 @@
 import React from 'react';
 import Calculator from '../../src/app/components/Calculator'
-import { render, screen, fireEvent, getByLabelText } from '@testing-library/react';
+import {render, screen, fireEvent} from '@testing-library/react';
+import {it,describe,expect} from 'vitest'
 
 describe('Calculator', () => {
   it('renders Calculator component correctly', () => {
