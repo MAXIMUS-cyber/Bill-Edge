@@ -24,6 +24,7 @@ const Calculator = () => {
           <label htmlFor="num1" className={`text-lg font-semibold ${isDarkMode ? "text-gray-300" : "text-gray-800"}`}>Number 1</label>
           <input
             type="number"
+            data-testid="num1-input"
             id="num1"
             value={num1}
             onChange={(e) => setNum1(parseFloat(e.target.value))}
@@ -35,6 +36,7 @@ const Calculator = () => {
           <label htmlFor="num2" className={`text-lg font-semibold ${isDarkMode ? "text-gray-300" : "text-gray-800"}`}>Number 2</label>
           <input
             type="number"
+            data-testid="num2-input"
             id="num2"
             value={num2}
             onChange={(e) => setNum2(parseFloat(e.target.value))}
