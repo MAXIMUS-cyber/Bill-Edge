@@ -4,9 +4,9 @@ import React from "react";
 
 const Calculator = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [num1, setNum1] = useState("");
-  const [num2, setNum2] = useState("");
-  const [result, setResult] = useState("");
+  const [num1, setNum1] = useState(0);
+  const [num2, setNum2] = useState(0);
+  const [result, setResult] = useState(0);
 
   const toggleDarkMode = () => {
     setIsDarkMode((prevMode) => !prevMode);
@@ -14,10 +14,7 @@ const Calculator = () => {
   };
 
   function calculateSum(){
-    const n1 = parseFloat(num1)
-    const n2 = parseFloat(num2)
-    const res = n1 + n2
-    setResult(res.toString())
+    setResult(num1+num2)
   }
   return (
     <main className={`bg-gradient-to-r ${isDarkMode ?"from-gray-800 via-gray-700 to-gray-600" : "from-purple-500 via-pink-500 to-red-500"} min-h-screen flex items-center justify-center`}>
@@ -29,7 +26,7 @@ const Calculator = () => {
             type="number"
             id="num1"
             value={num1}
-            onChange={(e) => setNum1(e.target.value)}
+            onChange={(e) => setNum1(parseFloat(e.target.value))}
             className={`w-full border-b-2 border-gray-400 focus:border-purple-500 px-4 py-2 focus:outline-none text-lg ${isDarkMode ? "dark:bg-gray-700" : ""}`}
             required
           />
@@ -40,7 +37,7 @@ const Calculator = () => {
             type="number"
             id="num2"
             value={num2}
-            onChange={(e) => setNum2(e.target.value)}
+            onChange={(e) => setNum2(parseFloat(e.target.value))}
             className={`w-full border-b-2 border-gray-400 focus:border-purple-500 px-4 py-2 focus:outline-none text-lg ${isDarkMode ? "dark:bg-gray-700" : ""}`}
             required
           />
