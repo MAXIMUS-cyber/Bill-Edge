@@ -1,8 +1,8 @@
-const jsonServer = require('json-server');
-const auth = require('json-server-auth');
-const server = jsonServer.create();
-const router = jsonServer.router('db.json');
-const middlewares = jsonServer.defaults();
+import { create, router as _router, defaults } from 'json-server';
+import auth from 'json-server-auth';
+const server = create();
+const router = _router('db.json');
+const middlewares = defaults();
 
 server.use(middlewares);
 server.db = router.db;
