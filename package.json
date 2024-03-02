@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "npm run test:ui",
-    "start": "node server.js"
+    "start": "json-server --watch db.json --port 3000"
   },
   "repository": {
     "type": "git",
