@@ -4,15 +4,9 @@ const server = create();
 const router = _router('db.json');
 const middlewares = defaults();
 
-server.use(middlewares);
-server.db = router.db;
-server.use(auth);
-server.use(router);
 
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`JSON Server is running on port ${PORT}`);
-});
+// Parse JSON request body
+server.use(express.json());
 
 server.post('/register', (req, res) => {
     const { username, password } = req.body;
@@ -63,5 +57,17 @@ server.get('/health', (res) => {
       status: 'OK',
       version: '1.0.0'
     });
-  });
+});
+
+server.use(middlewares);
+server.db = router.db;
+server.use(auth);
+server.use(router);
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`JSON Server is running on port ${PORT}`);
+});
+
+
   
