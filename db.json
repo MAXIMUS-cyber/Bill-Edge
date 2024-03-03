@@ -1,7 +1,56 @@
 {
-    "users" : [
-        {"ritabrata":"ritabrata"},
-        {"sagnik":"sagnik"},
-        {"swapnil":"swapnil"}
-    ]
+  "users": [
+    {
+      "email": "jozruki@kolvi.vg",
+      "password": "$2a$10$iLRdyzBMe36bdRDXwltGuepJr6XfFeFXM/fgHUbMdPGJrfnN5qAc6",
+      "role": [
+        "admin"
+      ],
+      "id": 1
+    },
+    {
+      "email": "obta@culfuw.ro",
+      "password": "$2a$10$dL986Dc57CyR3gayvl01qOEKHbBahVuhajXIqXrYvggnRq6yAjCgi",
+      "role": [
+        "user"
+      ],
+      "id": 2
+    },
+    {
+      "email": "kuc@ze.io",
+      "password": "$2a$10$1nm7Qx3z5PjnvDYn.L3koeF5xf4BTw6vf1t5Qz.7a3VjIadcTaQlO",
+      "role": [
+        "user"
+      ],
+      "id": 3
+    },
+    {
+      "email": "ritabratad459@gmail.com",
+      "password": "$2a$10$GvmHY7HdJsyrsYuxnkUZceARvvh7VC6VdG1SVQ4BNIA6zNR/li/sG",
+      "roles": [
+        "user"
+      ],
+      "id": 4
+    },
+    {
+      "email": "dkdas9961@gmail.com",
+      "password": "$2a$10$TGxq0tA29IhSXi09Ibph6.WqmXBPm7VcsGOU7FklLeWSO.8i1faVi",
+      "roles": [
+        "user"
+      ],
+      "id": 5
+    },
+    {
+      "email": "adas9961@gmail.com",
+      "password": "$2a$10$893Mz9tzfX2hmXXJqlJvp.81fOR3Jx.kigIkQ0k9K8bSIURJQS3a2",
+      "roles": [
+        "user"
+      ],
+      "id": 6
+    }
+  ],
+  "health":{
+    "status": "OK",
+    "version": "1.0.0"
+  }
 }
