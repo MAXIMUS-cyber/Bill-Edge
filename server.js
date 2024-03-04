@@ -2,7 +2,7 @@ import Chance from 'chance';
 
 const chance = new Chance();
 
-const baseUrl = 'http://localhost:3000'
+const baseUrl = 'http://localhost:4000'
 
 const users = [
     {

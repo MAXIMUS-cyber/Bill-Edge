@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-const baseUrl = 'http://localhost:3000/login'
+const baseUrl = 'http://localhost:4000/login'
 const email = process.argv[2]
 const password = process.argv[3]
 const existUser = await fetch(`${baseUrl}/login`,{

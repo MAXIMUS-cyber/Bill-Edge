@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'http://localhost:4000';
 
 if(process.argv.length<5){
     throw new Error("please enter the email,password and role")
