@@ -1,7 +1,17 @@
-FROM node:latest
-WORKDIR /app
+FROM node:20
+
+WORKDIR /home/node/app
+
 COPY package*.json ./
+
 RUN npm install
-COPY . .
+
+RUN mkdir -p node_modules && chown -R node:node /home/node/app
+
+COPY --chown=node:node . .
+
 EXPOSE 3000
-CMD ["node", "server.js"]
+
+RUN npm install -g json-server@0.17.4 json-server-auth@2.1.0 express
+
+CMD json-server-auth --watch db.json --port 3000 --host 0.0.0.0

@@ -6,11 +6,12 @@
   "type": "module",
   "scripts": {
     "test": "npm run test:ui",
-    "start": "node pre-start.js && json-server-auth -w -p 3000 -r routes.json db.json ",
+    "start": "node pre-start.js && json-server-auth -w -p 3000 -r routes.json --host 127.0.0.1 db.json",
     "register": "node register.js",
     "init": "node server.js",
     "login": "node login.js",
-    "health": "node health.js"
+    "health": "node health.js",
+    "build": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -30,8 +31,10 @@
     "crypto": "^1.0.1",
     "express": "^4.18.3",
     "fetch": "^1.1.0",
+    "fs": "^0.0.1-security",
     "json-server": "^0.17.4",
-    "json-server-auth": "^2.1.0"
+    "json-server-auth": "^2.1.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "chance": "^1.1.11"
