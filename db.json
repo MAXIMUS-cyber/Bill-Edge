@@ -1,7 +1,14 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "ritabratad459@gmail.com",
+      "password": "$2a$10$KqVD9aYV6eF9XxXEGnvU3.lgiAK4ANKEBjj9cdUVDdvPwxNtKrGNW",
+      "id": 1
+    }
+  ],
   "health": {
     "status": "OK",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "dbConnectionStatus": "connected"
   }
 }
