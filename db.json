@@ -4,6 +4,35 @@
       "email": "ritabratad459@gmail.com",
       "password": "$2a$10$KqVD9aYV6eF9XxXEGnvU3.lgiAK4ANKEBjj9cdUVDdvPwxNtKrGNW",
       "id": 1
+    },
+    {
+      "email": "sagnikghosh12@gmail.com",
+      "password": "$2a$10$L04JUmTOTSPQoKy8ivseBuBd1XDLq7oNE8s1GuDmu/lvTHZ9oD.b6",
+      "id": 2
+    },
+    {
+      "email": "putadsi@wapcup.al",
+      "password": "$2a$10$25QHgd3kX8Hpn6bELozmden/zIw4qJI28WXzyNlF96RilA6hloZP6",
+      "role": [
+        "admin"
+      ],
+      "id": 3
+    },
+    {
+      "email": "fiijmu@kemgazu.mq",
+      "password": "$2a$10$C6Q6xYz.GAVVd6qkLoLV5uUQiyf7hmw9emguRK600NbJQaMimqF52",
+      "role": [
+        "user"
+      ],
+      "id": 4
+    },
+    {
+      "email": "koira@revhekav.gm",
+      "password": "$2a$10$SttLxkMB96n6QW76qsG1pewkeRA7M/4pfTRdKzqEU5IIRFUnHbL62",
+      "role": [
+        "user"
+      ],
+      "id": 5
     }
   ],
   "health": {

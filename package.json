@@ -6,11 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "npm run test:ui",
-    "start": "node pre-start.js && json-server-auth -w -p 4000 -r routes.json --host 127.0.0.1 db.json",
-    "register": "node register.js",
+    "start": "json-server-auth --watch db.json -p 4000 --host 127.0.0.1",
     "init": "node server.js",
-    "login": "node login.js",
-    "health": "node health.js",
     "build": "npm run build"
   },
   "repository": {
